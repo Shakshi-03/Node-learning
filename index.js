@@ -1,18 +1,11 @@
 const express=require('express');
+const path =require('path');
 const app=express();
 
-app.get('',(req,resp)=>{
-  console.log("data sent by browser---->>",req.query.name);///>>routing with expressjs
-  resp.send("welcome"+ req.query.name);
-});
+const publicPath=path.join(__dirname,'public');
 
-app.get('/about',(req,resp)=>{
- 
-  resp.send("welcome to about page");
-});
+app.use(express.static(publicPath));
 
-app.get('/help',(req,resp)=>{
-  resp.send("welcome to help page");
-});
+
 
 app.listen(4000);
